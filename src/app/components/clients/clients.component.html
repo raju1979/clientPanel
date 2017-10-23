@@ -1,0 +1,36 @@
+<div id="restingContainer" *ngIf="clients?.length < 1" #noClients>
+  <img src="assets/img/resting.jpg" alt="">
+</div>
+<!-- 
+<ng-template>
+  <img src="assets/img/resting.jpg" alt="">
+</ng-template> -->
+<div class="row">
+  <div class="col-md-6">
+    <h2><i class="fa fa-users">Clients</i></h2>
+  </div>
+  <div class="col-md-6">
+    <h5 class="pull-right text-muted">Total Owed : {{totalOwed | currency:"INR":true}}</h5>
+  </div>
+</div>
+<table *ngIf="clients?.length > 0; else noClients" class="table table-stripped">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Balance</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let client of clients">
+      <td>{{client.key}}</td>
+      <td>{{client.firstName}} {{clientlastName}}</td>
+      <td>{{client.email}}</td>
+      <td>{{client.balance | currency:"INR":true}}</td>
+      <td><a href="" [routerLink]= "['/client/'+client.key]" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a></td>
+    </tr>
+  </tbody>
+
+</table>
